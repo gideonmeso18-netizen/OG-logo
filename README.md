@@ -1,2 +1,0 @@
-# OG-logo
-logo

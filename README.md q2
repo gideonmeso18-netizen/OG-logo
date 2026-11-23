@@ -1,0 +1,75 @@
+
+// Examination Number: YOUR EXAMINATION NUMBER
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+// Function to check username length
+bool CheckLength(string username)
+{
+    return username.length() >= 5;
+}
+
+// Function to check if username contains a number
+bool hasNumber(string username)
+{
+    for (int i = 0; i < username.length(); i++)
+    {
+        if (isdigit(username[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to check if username contains uppercase letter
+bool hasLowercase(string username)
+{
+    for (int i = 0; i < username.length(); i++)
+    {
+        if (isupper(username[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to determine username strength
+string getStrength(string username)
+{
+    int count = 0;
+
+    if (CheckLength(username))
+        count++;
+
+    if (hasNumber(username))
+        count++;
+
+    if (hasLowercase(username))
+        count++;
+
+    if (count == 3)
+        return "Strong";
+    else if (count == 2)
+        return "Moderate";
+    else
+        return "Weak";
+}
+
+// Main function
+int main()
+{
+    string username;
+
+    cout << "Enter username: ";
+    cin >> username;
+
+    cout << "\nUsername: " << username << endl;
+    cout << "Strength: " << getStrength(username) << endl;
+
+    return 0;
+}
+
